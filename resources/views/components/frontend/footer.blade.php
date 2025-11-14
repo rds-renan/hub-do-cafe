@@ -51,7 +51,7 @@
         </div>
 
         <div class="border-t border-amber-600 mt-12 pt-8 text-center text-gray-600 text-sm">
-            <p>&copy; {{ date('Y') }} Hub do Café. Todos os direitos reservados.</p>
+            <p>Projeto fictício desenvolvido para fins acadêmicos. Sem fins lucrativos.</p>
         </div>
     </div>
 </footer>
