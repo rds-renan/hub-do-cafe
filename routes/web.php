@@ -1,11 +1,10 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 // Rotas do Frontend (público)
-Route::get('/', function () {
-    return view('frontend.home');
-})->name('home');
+Route::get('/', HomeController::class)->name('home');
 
 Route::prefix('produtos')->name('products.')->group(function () {
     Route::get('/', function () {

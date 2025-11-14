@@ -1,4 +1,4 @@
-@props(['name', 'price', 'image', 'badge_tag' => null, 'id' => 1])
+@props(['name', 'description', 'price', 'image', 'badge_tag' => null, 'id' => 1])
 
 <div class="bg-white shadow-sm hover:shadow-lg transition overflow-hidden group">
     <div class="relative overflow-hidden">
@@ -10,7 +10,7 @@
 
     <div class="p-6">
         <h3 class="font-semibold text-lg text-gray-900 mb-2">{{ $name }}</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros.</p>
+        <p>{{ $description }}</p>
         <div class="flex items-center justify-between mt-6">
             <span class="text-3xl font-bold">R$ {{ number_format($price, 2, ',', '.') }}</span>
             <x-frontend.button>
