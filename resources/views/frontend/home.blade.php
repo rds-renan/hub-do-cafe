@@ -23,11 +23,12 @@
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 {{-- Aqui você pode usar um loop com produtos --}}
-                @for($i = 1; $i <= 3; $i++)
+                @for($i = 1; $i <= 9; $i++)
                     <x-frontend.product-card
                         :name="'Café Especial ' . $i"
                         :price="29.90"
                         :image="'images/product/coffee-' . $i . '.jpg'"
+                        :badge_tag="'NOVO'"
                     />
                 @endfor
             </div>
