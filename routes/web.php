@@ -1,10 +1,14 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\NewsaletterController;
 use Illuminate\Support\Facades\Route;
 
 // Rotas do Frontend (público)
 Route::get('/', HomeController::class)->name('home');
+
+Route::post('/newsletter', [NewsaletterController::class, 'store'])
+    ->name('newsletter.store');
 
 Route::prefix('produtos')->name('products.')->group(function () {
     Route::get('/', function () {

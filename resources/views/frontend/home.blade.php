@@ -47,6 +47,9 @@
                     </div>
                 @endforeach
             </div>
+
+            <!-- CTA -->
+            <x-frontend.cta/>
         </div>
     </section>
 </x-frontend.layout>
