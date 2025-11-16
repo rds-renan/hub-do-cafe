@@ -34,5 +34,12 @@ class UserSeeder extends Seeder
             'password' => Hash::make('Atendente#369'),
             'role' => 'employee'
         ]);
+
+        User::create([
+            'name' => 'Entregador Teste',
+            'email' => 'entregador@hubdocafe.rds.dev.br',
+            'password' => Hash::make('Entregador#470'),
+            'role' => 'deliveryman'
+        ]);
     }
 }
