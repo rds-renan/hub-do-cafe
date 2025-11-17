@@ -11,7 +11,7 @@
                     name="email"
                     type="email"
                     value="{{ old('email') }}"
-                    class="outline-1 outline-amber-950 -outline-offset-1 p-2 w-96"
+                    class="outline-1 outline-amber-950 -outline-offset-1 focus:outline-2 focus:outline-amber-900 p-2 w-96"
                     placeholder="Seu melhor e-mail"
                     required
                 >
