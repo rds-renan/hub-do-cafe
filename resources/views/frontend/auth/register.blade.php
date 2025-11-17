@@ -5,7 +5,7 @@
                 <h1 class="text-4xl font-bold mb-6">Crie sua conta. É rapidinho.</h1>
                 <p>Com uma conta, você salva seus endereços, acompanha seus pedidos e fica sabendo das novidades.</p>
             </div>
-            <form class="grid gap-4" method="POST" action="{{ route('register') }}">
+            <form class="grid gap-4" method="POST" action="{{ route('register.store') }}">
                 @csrf
                 <div>
                     <label for="name">Nome*</label>
