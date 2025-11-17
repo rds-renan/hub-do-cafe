@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\CustumerRegisterController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\CrmController;
@@ -21,9 +22,8 @@ Route::middleware('guest')->group(function () {
     Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
     Route::post('/login', [LoginController::class, 'login']);
 
-    Route::get('/cadastro', function () {
-        return view('frontend.auth.register');
-    })->name('register');
+    Route::get('/cadastro', [CustumerRegisterController::class, 'create'])->name('register.create');
+    Route::post('/cadastro', [CustumerRegisterController::class, 'store'])->name('register.store');
 
     Route::get('/forgot-password', [ForgotPasswordController::class, 'showLinkRequestForm'])
         ->name('password.request');
@@ -31,7 +31,7 @@ Route::middleware('guest')->group(function () {
         ->name('password.email');
 });
 
-// Client routes (store routes)
+// Client routes (shop routes)
 Route::prefix('my-account')->name('account.')->middleware(['auth', 'role:cliente'])->group(function () {
     Route::get('/pedidos', function () {
         return view('frontend.account.orders');

@@ -34,7 +34,7 @@
                     <x-frontend.button variant="outline" href="{{ route('login') }}">
                         Entrar
                     </x-frontend.button>
-                    <x-frontend.button variant="primary" href="{{ route('register') }}">
+                    <x-frontend.button variant="primary" href="{{ route('register.create') }}">
                         Cadastrar
                     </x-frontend.button>
                 @endauth

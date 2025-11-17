@@ -9,7 +9,7 @@
             <!-- Ações do Usuário -->
             <div class="flex items-center gap-4">
                 @if(Route::currentRouteName() === 'login')
-                    <p>Ainda não tem conta? <a href="{{ route('register') }}" class="underline" >Cadastre-se aqui</a></p>
+                    <p>Ainda não tem conta? <a href="{{ route('register.create') }}" class="underline" >Cadastre-se aqui</a></p>
                 @elseif(Route::currentRouteName() === 'register')
                     <p>Já é cliente? <a href="{{ route('login') }}" class="underline" >Entrar</a></p>
                 @endif
