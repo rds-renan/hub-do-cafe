@@ -91,3 +91,7 @@ Route::prefix('delivery')->name('delivery.')->middleware(['auth', 'role:delivery
 
     // Adicione outras rotas do delivery aqui quando criar o sistema
 });
+
+Route::get('/coming-soon', function () {
+    return view('frontend.coming-soon');
+})->name('coming.soon');
