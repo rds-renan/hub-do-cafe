@@ -10,9 +10,9 @@
 
         <title>{{ $title }}</title>
 
-        @vite(['resources/css/frontend.css', 'resources/js/app.js'])
+        @vite(['resources/css/frontend.css'])
     </head>
-    <body class="font-sans antialiased bg-white">
+    <body class="font-sans antialiased bg-white" data-cart-count="{{ count((array) session('cart')) }}">
         <x-frontend.header />
 
         <main class="min-h-screen">
@@ -21,6 +21,7 @@
 
         <x-frontend.footer />
 
+        @vite(['resources/js/app.js'])
         @stack('scripts')
     </body>
 </html>

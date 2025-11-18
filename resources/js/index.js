@@ -1,3 +1,6 @@
+import '@fontsource/material-icons';
+import './bootstrap';
+
 import "jsvectormap/dist/jsvectormap.min.css";
 import "flatpickr/dist/flatpickr.min.css";
 import "dropzone/dist/dropzone.css";
