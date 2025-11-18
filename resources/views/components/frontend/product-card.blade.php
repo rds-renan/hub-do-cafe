@@ -1,4 +1,12 @@
-@props(['name', 'description', 'price', 'image', 'badge_tag' => null, 'id' => 1])
+@props([
+    'id',
+    'name',
+    'description',
+    'price',
+    'image',
+    'badge_tag' => null,
+    'id' => 1
+])
 
 <div class="bg-white shadow-sm hover:shadow-lg transition overflow-hidden group">
     <div class="relative overflow-hidden">
@@ -13,9 +21,19 @@
         <p>{{ $description }}</p>
         <div class="flex items-center justify-between mt-6">
             <span class="text-3xl font-bold">R$ {{ number_format($price, 2, ',', '.') }}</span>
-            <x-frontend.button>
-                Adicionar
-            </x-frontend.button >
+            @auth
+            <form action="{{ route('account.cart.store') }}" method="POST" class="add-to-cart-form">
+                @csrf
+                <input type="hidden" name="product_id" value="{{ $id }}">
+                <x-frontend.button type="submit">
+                    Adicionar
+                </x-frontend.button >
+            </form>
+            @else
+            <a href="{{ route('login') }}">
+                <x-frontend.button>Entrar</x-frontend.button>
+            </a>
+            @endauth
         </div>
     </div>
 </div>

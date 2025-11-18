@@ -38,6 +38,7 @@
                          x-transition
                          class="will-change-transform">
                         <x-frontend.product-card
+                            :id="$product->id"
                             :name="$product->name"
                             :description="$product->description"
                             :price="$product->price"
