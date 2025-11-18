@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\CustumerRegisterController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\CrmController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NewsaletterController;
@@ -32,7 +33,7 @@ Route::middleware('guest')->group(function () {
 });
 
 // Client routes (shop routes)
-Route::prefix('my-account')->name('account.')->middleware(['auth', 'role:cliente'])->group(function () {
+Route::prefix('my-account')->name('account.')->middleware(['auth', 'role:client'])->group(function () {
     Route::get('/pedidos', function () {
         return view('frontend.account.orders');
     })->name('orders');
@@ -41,6 +42,9 @@ Route::prefix('my-account')->name('account.')->middleware(['auth', 'role:cliente
         return view('frontend.account.profile');
     })->name('profile');
 
+    Route::post('cart', [CartController::class, 'store'])->name('cart.store');
+    Route::get('cart', [CartController::class, 'index'])->name('cart.index');
+    Route::delete('cart', [CartController::class, 'remove'])->name('cart.remove');
     // Add others routes here
 });
 
