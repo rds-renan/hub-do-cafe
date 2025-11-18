@@ -22,7 +22,7 @@
         <div class="flex items-center justify-between mt-6">
             <span class="text-3xl font-bold">R$ {{ number_format($price, 2, ',', '.') }}</span>
             @auth
-            <form action="{{ route('account.cart.store') }}" method="POST" class="add-to-cart-form">
+            <form action="{{ route('account.cart.add') }}" method="POST" class="add-to-cart-form">
                 @csrf
                 <input type="hidden" name="product_id" value="{{ $id }}">
                 <x-frontend.button type="submit">

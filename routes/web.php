@@ -42,10 +42,14 @@ Route::prefix('my-account')->name('account.')->middleware(['auth', 'role:client'
         return view('frontend.account.profile');
     })->name('profile');
 
-    Route::post('cart', [CartController::class, 'store'])->name('cart.store');
-    Route::get('cart', [CartController::class, 'index'])->name('cart.index');
-    Route::delete('cart', [CartController::class, 'remove'])->name('cart.remove');
-    // Add others routes here
+    Route::prefix('cart')->name('cart.')->group(function () {
+        Route::get('/', [CartController::class, 'index'])->name('index');
+        Route::post('/add', [CartController::class, 'store'])->name('add');
+        Route::put('/{id}', [CartController::class, 'update'])->name('update');
+        Route::delete('/{id}', [CartController::class, 'destroy'])->name('destroy');
+        Route::delete('/', [CartController::class, 'clear'])->name('clear');
+        Route::get('/data', [CartController::class, 'getCartData'])->name('data');
+    });
 });
 
 // Logout (acces  for all users logged)
