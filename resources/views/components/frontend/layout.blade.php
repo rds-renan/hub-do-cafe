@@ -12,7 +12,7 @@
 
         @vite(['resources/css/frontend.css'])
     </head>
-    <body class="font-sans antialiased bg-white" data-cart-count="{{ count((array) session('cart')) }}">
+    <body class="font-sans antialiased bg-white">
         <x-frontend.header />
 
         <main class="min-h-screen">
