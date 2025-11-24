@@ -36,13 +36,14 @@ jobs:
             cd /var/www/hub-do-cafe
 
             # Puxa as atualizações do Git
+            git reset --hard
             git pull origin main
 
             # Instala dependências do Composer
             composer install --no-interaction --prefer-dist --optimize-autoloader --no-dev
 
             # Instala dependências do Node (Frontend)
-            npm install
+            npm ci
 
             # Compila os assets (CSS/JS) para produção
             npm run build
