@@ -69,17 +69,6 @@ Route::prefix('products')->name('products.')->group(function () {
     })->name('show');
 });
 
-
-Route::prefix('carrinho')->name('cart.')->group(function () {
-    Route::get('/revisao', function () {
-        return view('frontend.cart.review');
-    })->name('review');
-
-    Route::get('/checkout', function () {
-        return view('frontend.cart.checkout');
-    })->name('checkout');
-});
-
 // Rotas Admin (protegidas - apenas para funcionários)
 Route::prefix('crm')->name('crm.')->middleware(['auth', 'role:admin,employee'])->group(function () {
     // TODO: Adicionar middleware 'role:employee' quando implementar o sistema de roles
