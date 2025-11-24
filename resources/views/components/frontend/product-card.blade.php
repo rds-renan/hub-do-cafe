@@ -31,7 +31,7 @@
             </form>
             @else
             <a href="{{ route('login') }}">
-                <x-frontend.button>Entrar</x-frontend.button>
+                <x-frontend.button>Adicionar</x-frontend.button>
             </a>
             @endauth
         </div>
