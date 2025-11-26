@@ -7,6 +7,7 @@
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)
 ![AWS](https://img.shields.io/badge/AWS-232F3E?style=for-the-badge&logo=amazon-aws&logoColor=white)
 ![GitHub Actions](https://img.shields.io/badge/github%20actions-%232671E5.svg?style=for-the-badge&logo=githubactions&logoColor=white)
+![Redis](https://img.shields.io/badge/redis-%23DD0031.svg?style=for-the-badge&logo=redis&logoColor=white)
 
 > **Projeto Acadêmico / Portfólio** - Sistema de Gestão e E-commerce para Cafeteria Gourmet.
 
@@ -41,6 +42,7 @@ Este projeto vai além do código, implementando uma esteira de DevOps completa:
 
 ### Backend & Infraestrutura & DevOps
 -   **PHP 8.3+** & **Laravel 12**
+-   **Redis** (Cache, Session, Queue)
 -   **Supabase** (Database as a Service)
 -   **AWS EC2** (Compute/Linux Ubuntu 24.04)
 -   **Nginx** (Web Server)
