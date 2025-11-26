@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\ProductModel;
+use App\Models\Setting;
 use Illuminate\Http\Request;
 
 class CartController extends Controller
@@ -208,13 +209,15 @@ class CartController extends Controller
      */
     private function calculateShipping($subtotal)
     {
-        // Exemplo: frete grátis acima de R$ 100
-        if ($subtotal >= 100) {
+        $limitForShippingFree = Setting::get('shipping_limit_for_free', 100);
+        $shippingCost = Setting::get('shipping_cost', 2);
+
+        if ($subtotal >= $limitForShippingFree) {
             return 0;
         }
 
-        // Frete fixo de R$ 15
-        return 15.00;
+        // todo - Modificar função para calcular frete por km, precisa das funções de endereço prontas
+        return $shippingCost;
 
         // Ou você pode calcular baseado no peso, CEP, etc.
         // return $this->calculateShippingByCep($cep);
