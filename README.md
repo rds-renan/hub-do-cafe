@@ -3,7 +3,6 @@
 ![Laravel](https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white)
 ![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
 ![Alpine.js](https://img.shields.io/badge/Alpine.js-8BC0D0?style=for-the-badge&logo=alpine.js&logoColor=white)
-![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)
 ![AWS](https://img.shields.io/badge/AWS-232F3E?style=for-the-badge&logo=amazon-aws&logoColor=white)
 ![GitHub Actions](https://img.shields.io/badge/github%20actions-%232671E5.svg?style=for-the-badge&logo=githubactions&logoColor=white)
@@ -32,7 +31,7 @@ Este projeto vai além do código, implementando uma esteira de DevOps completa:
 * **Infraestrutura Cloud:** Hospedado em **AWS EC2** com IP Elástico.
 * **CI/CD Pipeline:** Deploy automatizado via **GitHub Actions**. Todo push na branch `main` aciona um workflow que atualiza o servidor, instala dependências e roda migrations automaticamente.
 * **Servidor Web:** Alta performance com **Nginx** e **PHP-FPM**.
-* **Banco de Dados:** Escalabilidade com **PostgreSQL (via Supabase)**.
+* **Banco de Dados:** Escalabilidade com **PostgreSQL self-hosted**.
 * **Segurança:** Tráfego protegido por **Cloudflare (SSL Full Strict)** e firewall configurado.
 * **Frontend Moderno:** Build de assets em produção otimizado com **Vite**.
 
@@ -43,7 +42,7 @@ Este projeto vai além do código, implementando uma esteira de DevOps completa:
 ### Backend & Infraestrutura & DevOps
 -   **PHP 8.3+** & **Laravel 12**
 -   **Redis** (Cache, Session, Queue)
--   **Supabase** (Database as a Service)
+-   **PostgreSQL** (Database self-hosted)
 -   **AWS EC2** (Compute/Linux Ubuntu 24.04)
 -   **Nginx** (Web Server)
 -   **GitHub Actions** (CI/CD)
