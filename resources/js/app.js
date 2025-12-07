@@ -1,10 +1,15 @@
 import '@fontsource/material-icons';
 import './bootstrap';
 import Alpine from 'alpinejs';
+import mask from '@alpinejs/mask';
+import {collapse} from "@alpinejs/collapse";
 
 import.meta.glob([
    '../images/**',
 ]);
+
+Alpine.plugin(mask);
+Alpine.plugin(collapse);
 
 window.Alpine = Alpine;
 Alpine.start();
@@ -203,6 +208,6 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // Exporta as funções caso precise usar em outros lugares
-if (typeof module !== 'undefined' && module.exports) {
-    module.exports = { addToCart, updateCartBadge, showNotification };
-}
+window.addToCart = addToCart;
+window.updateCartBadge = updateCartBadge;
+window.showNotification = showNotification;
