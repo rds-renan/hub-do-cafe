@@ -30,9 +30,7 @@ class LoginController extends Controller
             $user = Auth::user();
 
             return match($user->role) {
-                'admin', 'employee' => redirect()->route('crm.dashboard')
-                    ->with('success', 'Login realizado com sucesso!'),
-                'delivery' => redirect()->route('delivery.dashboard')
+                'admin', 'employee', 'deliveryman' => redirect()->route('crm.dashboard')
                     ->with('success', 'Login realizado com sucesso!'),
                 default => redirect()->intended(route('home'))
                     ->with('success', 'Login realizado com sucesso!')

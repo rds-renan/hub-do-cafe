@@ -37,12 +37,14 @@ Route::middleware('guest')->group(function () {
 // Client routes (shop routes)
 Route::prefix('my-account')->name('account.')->middleware(['auth', 'role:client'])->group(function () {
     Route::get('/pedidos', function () {
-        return view('frontend.account.orders');
+        return redirect()->route('coming.soon');
     })->name('orders');
 
     Route::get('/perfil', function () {
-        return view('frontend.account.profile');
+        return redirect()->route('coming.soon');
     })->name('profile');
+
+    Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
 
     Route::prefix('cart')->name('cart.')->group(function () {
         Route::get('/', [CartController::class, 'index'])->name('index');
