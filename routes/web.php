@@ -4,6 +4,8 @@ use App\Http\Controllers\Auth\CustumerRegisterController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\AddressController;
 use App\Http\Controllers\CrmController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NewsaletterController;
@@ -50,6 +52,14 @@ Route::prefix('my-account')->name('account.')->middleware(['auth', 'role:client'
         Route::delete('/', [CartController::class, 'clear'])->name('clear');
         Route::get('/data', [CartController::class, 'getCartData'])->name('data');
     });
+
+    Route::prefix('addresses')->name('addresses.')->group(function () {
+        Route::get('/addresses', [AddressController::class, 'index'])->name('index');
+        Route::post('/addresses', [AddressController::class, 'store'])->name('store');
+        Route::put('/addresses/{address}', [AddressController::class, 'update'])->name('update');
+        Route::delete('/addresses/{address}', [AddressController::class, 'destroy'])->name('destroy');
+        Route::post('/addresses/{address}/default', [AddressController::class, 'setDefault'])->name('set-default');
+    });
 });
 
 // Logout (acces  for all users logged)
@@ -58,35 +68,15 @@ Route::post('/logout', [LoginController::class, 'logout'])
     ->name('logout');
 
 
-// Produtcs
-Route::prefix('products')->name('products.')->group(function () {
-    Route::get('/', function () {
-        return view('frontend.products.index');
-    })->name('index');
-
-    Route::get('/{id}', function ($id) {
-        return view('frontend.products.show', compact('id'));
-    })->name('show');
-});
-
 // Rotas Admin (protegidas - apenas para funcionários)
-Route::prefix('crm')->name('crm.')->middleware(['auth', 'role:admin,employee'])->group(function () {
-    // TODO: Adicionar middleware 'role:employee' quando implementar o sistema de roles
+Route::prefix('crm')->name('crm.')->middleware(['auth', 'role:admin,employee,deliveryman'])->group(function () {
+    // TODO: Adicionar middleware 'role:employee' e 'role:deliveryman quando implementar o sistema de roles
     Route::get('/dashboard', [CrmController::class, 'index'])->name('dashboard');
 
     // Aqui você pode adicionar outras rotas administrativas
     // Route::resource('products', ProductController::class);
     // Route::resource('orders', OrderController::class);
     // Route::resource('users', UserController::class);
-});
-
-// Rotas do Delivery
-Route::prefix('delivery')->name('delivery.')->middleware(['auth', 'role:delivery'])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('delivery.dashboard');
-    })->name('dashboard');
-
-    // Adicione outras rotas do delivery aqui quando criar o sistema
 });
 
 Route::get('/coming-soon', function () {
