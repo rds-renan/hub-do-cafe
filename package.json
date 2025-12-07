@@ -24,6 +24,8 @@
         "vite-plugin-image-optimizer": "^2.0.2"
     },
     "dependencies": {
+        "@alpinejs/collapse": "^3.15.2",
+        "@alpinejs/mask": "^3.15.2",
         "@alpinejs/persist": "^3.15.0",
         "@fontsource/material-icons": "^5.2.7",
         "@fullcalendar/core": "^6.1.19",
@@ -38,6 +40,7 @@
         "flatpickr": "^4.6.13",
         "fullcalendar": "^6.1.15",
         "jsvectormap": "^1.7.0",
+        "leaflet": "^1.9.4",
         "swiper": "^11.1.14",
         "tailwind-scrollbar": "^4.0.2"
     }

@@ -37,8 +37,8 @@
 
                 <!-- Resumo do Pedido (1/3) -->
                 <div class="lg:col-span-1">
-                    <div class="bg-white shadow-md p-6 sticky top-4">
-                        <h2 class="text-xl font-bold text-gray-800 mb-6 border-b pb-3">
+                    <div class="bg-white shadow-md p-6 sticky top-4 border-s-2 border-s-amber-600">
+                        <h2 class="text-xl font-bold text-gray-800 mb-6 pb-3">
                             Resumo do Pedido
                         </h2>
 
@@ -57,7 +57,7 @@
                                     @if($shipping == 0)
                                         <span class="text-green-600 font-semibold">Grátis</span>
                                     @else
-                                        R$ {{ number_format($shipping, 2, ',', '.') }}
+                                        <span class="text-green-600 font-semibold">A calcular</span>
                                     @endif
                                 </span>
                             </div>
@@ -83,8 +83,8 @@
 
                         <!-- Botões de Ação -->
                         <div class="space-y-3">
-                            <x-frontend.button href="{{ route('coming.soon') }}" class="w-full">
-                                Finalizar Pedido
+                            <x-frontend.button href="{{ route('account.checkout') }}" class="w-full">
+                                Seguir para pagamento
                             </x-frontend.button>
 
                             <x-frontend.button href="{{ route('home') }}" variant="outline" class="w-full">
@@ -131,7 +131,9 @@
             if (newQuantity < 1) return;
 
             try {
-                const response = await fetch(`/my-account/cart/${productId}`, {
+                let url = "{{ route('account.cart.update', ':product') }}"
+                url = url.replace(':product', productId);
+                const response = await fetch(url, {
                     method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json',
@@ -164,12 +166,10 @@
 
         // Função para remover produto do carrinho
         async function removeFromCart(productId) {
-            if (!confirm('Deseja realmente remover este produto do carrinho?')) {
-                return;
-            }
-
             try {
-                const response = await fetch(`/my-account/cart/${productId}`, {
+                let url = "{{ route('account.cart.destroy', ':product') }}"
+                url = url.replace(':product', productId);
+                const response = await fetch(url, {
                     method: 'DELETE',
                     headers: {
                         'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
@@ -192,19 +192,14 @@
                     }, 300);
                 }
             } catch (error) {
-                console.error('Erro ao remover produto:', error);
-                alert('Erro ao remover produto. Tente novamente.');
+                window.showNotification('Erro ao remover produto. Tente novamente.', 'error');
             }
         }
 
         // Função para limpar carrinho
         async function clearCart() {
-            if (!confirm('Deseja realmente limpar todo o carrinho?')) {
-                return;
-            }
-
             try {
-                const response = await fetch('/my-account/cart', {
+                const response = await fetch('{{ route('account.cart.clear') }}', {
                     method: 'DELETE',
                     headers: {
                         'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
@@ -219,8 +214,7 @@
                     location.reload();
                 }
             } catch (error) {
-                console.error('Erro ao limpar carrinho:', error);
-                alert('Erro ao limpar carrinho. Tente novamente.');
+                window.showNotification('Erro ao limpar carrinho. Tente novamente.', 'error');
             }
         }
     </script>
